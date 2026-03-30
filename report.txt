@@ -1,1 +1,20 @@
-pilot
+1. Time Log - March 30th 2026: 
+
+4PM -> 5PM: Decide lab topic, talk through project details
+5PM -> 6PM: Worked on .h file
+6PM -> 8PM: Come up with test cases
+
+
+Lab Topic: Clients on a Router
+Lab Description: 
+
+
+2. Pros and cons of using classes (OOP) for this specific idea/problem
+
+3. Data Structure used for this project? 
+    The data structure used for this project is going to be Hash Table because it provides
+    us with a time complexity of O(1) when handled properly. This project is going to take
+    in multiple client's data and store it in bins in a hash table and it is important that
+    the fetching speed is fast.
+
+4. Provides at a high level least two test cases/unit tests for the problem outlined above
