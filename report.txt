@@ -13,6 +13,8 @@ Lab Description:
         - lookup of clients (for "sending" data)
         - deleting/ modifying client info
         - maintaining state
+            - holding only set amount of clients based on their statistics, uptime, online status 
+            - handle many clients added/ removed
 
 2. Pros and cons of using classes (OOP) for this specific idea/problem
     Using classes is a good idea for storing and looking up client information. 
