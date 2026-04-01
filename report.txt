@@ -1,3 +1,5 @@
+Team Members: Faraz Ghouri, Casey 
+
 1. Time Log - March 30th 2026: 
 
 4PM -> 5PM: Decide lab topic, talk through project details
@@ -18,7 +20,7 @@ Lab Description:
 
 2. Pros and cons of using classes (OOP) for this specific idea/problem
     Using classes is a good idea for storing and looking up client information.
-    Building the client as a reusable object allows for us to manage many instances of them using the same         logic as well as standardize functions related to manipulating and adding/deleting them from our data        structures.
+    Building the client as a reusable object allows for us to manage many instances of them using the same         logic as well as standardize functions related to manipulating and adding/deleting them from our data structures.
     Since the information related to each client differs and determines how it interacts on a network.
     As well the object can interact with the hashing part of the program to keep client information secure         while.
       it is being accessed and/or manipulated.
