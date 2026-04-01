@@ -17,13 +17,14 @@ Lab Description:
             - handle many clients added/ removed
 
 2. Pros and cons of using classes (OOP) for this specific idea/problem
-    Using classes is a good idea for storing and looking up client information. 
+    Using classes is a good idea for storing and looking up client information.
+    Building the client as a reusable object allows for us to manage many instances of them using the same         logic as well as standardize functions related to manipulating and adding/deleting them from our data        structures.
     Since the information related to each client differs and determines how it interacts on a network.
-    As well the object can interact with the hashing part of the program to keep client information secure while
-    it is being accessed and/or manipulated.
+    As well the object can interact with the hashing part of the program to keep client information secure         while.
+      it is being accessed and/or manipulated.
     
     Pros of using classes:
-    - ALlows us to store informations about a client in a well-ordered structure
+    - Allows us to store informations about a client in a well-ordered structure
         instead of scattered variables.
     - Convenient set/get functions.
     - Protect valuable data (private).
@@ -31,10 +32,22 @@ Lab Description:
     Cons of using classes:
     - More memory
 
-3. Data Structure used for this project? 
+3. Data Structure used for this project? (unordered map?)
     The data structure used for this project is going to be Hash Table because it provides
     us with a time complexity of O(1) when handled properly. This project is going to take
     in multiple client's data and store it in bins in a hash table and it is important that
     the fetching speed is fast.
 
 4. Provides at a high level least two test cases/unit tests for the problem outlined above
+    Test Cases:
+        - Non-state dependent: input.txt -> add , lookup, delete -> (test_output.txt vs. expected output).
+            - Maybe consider time of two different hashing algos for the object.
+        - State dependent:
+            - Instantiate the "wifi router" hash map with state conditions which are maintained and checked on add/manip/delete.
+            - input.txt -> output.txt vs expected output and comparison of time of two algos. 
+
+
+
+
+
+
