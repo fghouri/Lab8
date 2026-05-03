@@ -51,7 +51,7 @@ int main(int argc, char **argv)
       if (!(ss >> min_rssi)) throw((string) "Bad Minimum RSSI");
     }
 
-    t = (state) ? router.Set_up(state, max_clients, min_rssi) : router.Set_up(state);
+    t = (state) ? router.Set_Up(state, max_clients, min_rssi) : router.Set_Up(state);
     if (t != "") throw(t);
   } catch (string t) {
     cerr << "Usage: router_tester state(Stateful/Stateless) -- if stateless add options --> max_clients min_rssi [prompt] \n";
