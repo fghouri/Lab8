@@ -23,13 +23,12 @@ int main(int argc, char **argv)
 {
   string name, prompt, mac_address;
   Router router;
-  size_t i;
   int max_clients =1000;
   int min_rssi = 0;
   int rssi;
   
 
-  string s, line;        // read new line append to vector sv
+  string t, line;        // read new line append to vector sv
   vector <string> sv;
   istringstream ss;
 
@@ -41,7 +40,7 @@ int main(int argc, char **argv)
     if (prompt.size() > 0 && prompt[prompt.size()-1 != ' ']) prompt.push_back(' ');
 
     
-    state = (argc == 4 && argv[1] == "stateful") ? true : false;
+    bool state = (argc == 4 && argv[1] == "stateful") ? true : false;
     if (state){
       ss.clear();
       ss.str(argv[3]);
