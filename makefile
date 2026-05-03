@@ -3,7 +3,7 @@ CFLAGS ?= -std=c++98 -Wall -Wextra -Iinclude
 # -------------------------
 # This means that when you just type "make", you make all of the executables
 
-ALL = bin/read_as_hex bin/hash_tester
+ALL = bin/router_tester
 
 all: $(ALL)
 
