@@ -67,7 +67,7 @@ int main(int argc, char **argv)
     sv.clear();
     ss.clear();
     ss.str(line);
-    while (ss > s) sv.push_back(s);
+    while (ss >> s) sv.push_back(s);
 
     if (sv.size() == 0 || sv[0][0] == '#') {
     } else if (sv[0] == "A") {
@@ -76,10 +76,10 @@ int main(int argc, char **argv)
       } else {
         name = sv[1];
         rssi = sv[2];
-        mac = sv[3];
-        s = router.Add(name, rssi, mac);
+        mac_address = sv[3];
+        s = router.Add(name, rssi, mac_address);
         if (s != ""){
-          cout << "A " << name << " " << rssi " " << mac << endl;
+          cout << "A " << name << " " << rssi << " " << mac_address << endl;
           cout << s << endl;
         }
       }
@@ -98,7 +98,7 @@ int main(int argc, char **argv)
       router.Print();
     } else if (sv[0] == "Q") {
       return 0;
-    } else if (sv[0] == ?) {
+    } else if (sv[0] == "?") {
       print_commands();
     } else {
       printf("Unkown command %s\n", sv[0].c_str());
