@@ -5,6 +5,7 @@
 #include "client.hpp"
 #include <iostream>
 #include <string>
+#include <iomanip>
 /* ** Functions ** */
 // Purpose: Instantiate a client object with the given information
 Client:: Client(const string &name, const int &rssi, const string &mac_address) {
@@ -17,6 +18,17 @@ Client:: Client(const string &name, const int &rssi, const string &mac_address) 
 void Client:: Print_Data() const {
     cout << "Name: " << getName() << " RSSI: " << getRSSI() << "MAC: " << getMAC() << endl;
 }
+
+void Client::Print_Client_Card() const {
+    cout << "  __________________________" << endl;
+    cout << "  |        Client          |" << endl;
+    cout << "  --------------------------" << endl;
+    cout << "  | Name: " << setw(17) << left << name << "|" << endl;
+    cout << "  | RSSI: " << setw(17) << left << rssi << "|" << endl;
+    cout << "  | MAC:  " << setw(17) << left << mac_address << "|" << endl;
+    cout << "  --------------------------" << endl;
+}
+
 
 std::string Client:: String_Data() {
     string s = "Name: " + getName() + " RSSI: " + std::to_string(getRSSI()) + " MAC: " + getMAC() + "\n";
