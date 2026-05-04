@@ -15,7 +15,7 @@ Client:: Client(const string &name, const int &rssi, const string &mac_address) 
 
 // Purpose: Prints the client's information
 void Client:: Print_Data() {
-    cout << "Name: " << getName() << " RSSI: " << getRSSI() << "MAC: " << getMAC() << endl; 
+    cout << "Name: " << getName() << " RSSI: " << getRSSI() << " MAC: " << getMAC() << endl; 
 }
 
 // Methods to return private data

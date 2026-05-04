@@ -8,8 +8,8 @@ class Router {
     public:
         string Set_Up(const bool stateful, int max_clients = 10000, int min_rssi = 0);
         string Add(const string &name, const int &rssi, const string &mac_address);
-        string Find(const string &mac_address);
-        void printAll() const;
+        Client* Find(const string &mac_address);
+        void printAll();
     
     protected: 
         unordered_map<string, Client> client_table;
