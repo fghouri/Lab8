@@ -40,7 +40,7 @@ int main(int argc, char **argv)
     if (prompt.size() > 0 && prompt[prompt.size()-1 != ' ']) prompt.push_back(' ');
 
     
-    bool state = (argc == 4 && argv[1] == "stateful") ? true : false;
+    bool state = (argc == 4 && string(argv[1]) == "stateful") ? true : false;
     if (state){
       ss.clear();
       ss.str(argv[3]);
@@ -66,7 +66,7 @@ int main(int argc, char **argv)
     sv.clear();
     ss.clear();
     ss.str(line);
-    while (ss >> s) sv.push_back(s);
+    while (ss >> t) sv.push_back(t);
 
     if (sv.size() == 0 || sv[0][0] == '#') {
     } else if (sv[0] == "A") {
@@ -74,23 +74,23 @@ int main(int argc, char **argv)
         cout << "Usage: A name rssi mac\n";
       } else {
         name = sv[1];
-        rssi = sv[2];
+        rssi = stoi(sv[2]);
         mac_address = sv[3];
-        s = router.Add(name, rssi, mac_address);
-        if (s != ""){
+        t = router.Add(name, rssi, mac_address);
+        if (t != ""){
           cout << "A " << name << " " << rssi << " " << mac_address << endl;
-          cout << s << endl;
+          cout << t << endl;
         }
       }
     } else if (sv[0] == "F") {
       if (sv.size() != 2){
         cout << "Usage: F mac_address\n";
       } else {
-        s = router.Find(sv[1]);
-        if (s != ""){
+        t = router.Find(sv[1]);
+        if (t != ""){
           cout << "Not found. \n";
         } else {
-          cout << "Found: " << s << endl;
+          cout << "Found: " << t << endl;
         }
       }
     } else if (sv[0] == "P") {
