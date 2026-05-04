@@ -45,10 +45,10 @@ int main(int argc, char **argv)
     bool state = (argc == 4 && string(argv[1]) == "stateful") ? true : false;
     if (state){
       ss.clear();
-      ss.str(argv[3]);
+      ss.str(argv[2]);
       if (!(ss >> max_clients)) throw((string) "Bad Max Clients Parameter");
       ss.clear();
-      ss.str(argv[4]);
+      ss.str(argv[3]);
       if (!(ss >> min_rssi)) throw((string) "Bad Minimum RSSI");
     }
 
