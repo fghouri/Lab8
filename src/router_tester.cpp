@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include <cstdio>
+#include <vector>
 using namespace std;
 
 void print_commands()
@@ -26,7 +27,7 @@ int main(int argc, char **argv)
   int max_clients =1000;
   int min_rssi = 0;
   int rssi;
-  
+
 
   string t, line;        // read new line append to vector sv
   vector <string> sv;
@@ -40,11 +41,12 @@ int main(int argc, char **argv)
     if (prompt.size() > 0 && prompt[prompt.size()-1 != ' ']) prompt.push_back(' ');
 
     
+
     bool state = (argc == 4 && string(argv[1]) == "stateful") ? true : false;
     if (state){
       ss.clear();
       ss.str(argv[3]);
-      if (!(ss >> max_clients)) throw((string) "Bad Max Clients Parameter"); 
+      if (!(ss >> max_clients)) throw((string) "Bad Max Clients Parameter");
       ss.clear();
       ss.str(argv[4]);
       if (!(ss >> min_rssi)) throw((string) "Bad Minimum RSSI");
@@ -63,6 +65,7 @@ int main(int argc, char **argv)
     cout.flush();
 
     if(!getline(cin, line)) return 0;
+
     sv.clear();
     ss.clear();
     ss.str(line);
@@ -78,7 +81,7 @@ int main(int argc, char **argv)
         mac_address = sv[3];
         t = router.Add(name, rssi, mac_address);
         if (t != ""){
-          cout << "A " << name << " " << rssi << " " << mac_address << endl;
+        cout << "A " << name << " " << rssi << " " << mac_address << endl;
           cout << t << endl;
         }
       }
@@ -87,14 +90,14 @@ int main(int argc, char **argv)
         cout << "Usage: F mac_address\n";
       } else {
         t = router.Find(sv[1]);
-        if (t != ""){
+        if (t == ""){
           cout << "Not found. \n";
         } else {
           cout << "Found: " << t << endl;
         }
       }
     } else if (sv[0] == "P") {
-      router.Print();
+      router.printAll();
     } else if (sv[0] == "Q") {
       return 0;
     } else if (sv[0] == "?") {
@@ -102,8 +105,9 @@ int main(int argc, char **argv)
     } else {
       printf("Unkown command %s\n", sv[0].c_str());
     }
-    
+
   }
+
   
   
 }
