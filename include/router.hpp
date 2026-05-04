@@ -11,9 +11,9 @@ class Router {
     public:
         std::string Set_Up(const bool stateful, int max_clients = 10000, int min_rssi = 0);
         std::string Add(const std::string &name, const int &rssi, const std::string &mac_address);
-        std::string Find(const std::string &mac_address);
+        std::string Find(const std::string &mac_address) const;
         void printAll() const;
-
+        void Print_State() const;
     protected:
         std::unordered_map<std::string, Client> client_table;
         bool stateful;
