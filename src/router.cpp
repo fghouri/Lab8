@@ -17,6 +17,17 @@ string Router::Set_Up(const bool stateful, int max_clients, int min_rssi)
     return "";
 }
 
+void Router::Print_State() const {
+    cout << "____________________________________" << endl;
+    cout << "|              Router              |" << endl;
+    cout << "------------------------------------" << endl;
+    // left-justify the labels and set a width of 15 for alignment
+    cout << "| State:       " << (stateful ? "Stateful" : "Stateless") << endl;
+    cout << "| Max Clients: " << max_clients << endl;
+    cout << "| Min RSSI:    " << min_rssi << endl;
+    cout << "------------------------------------" << endl;
+}
+
 string Router:: Add(const string &name, const int &rssi, const string &mac_address) {
     Client client(name, rssi, mac_address);
 
@@ -45,7 +56,14 @@ string Router::Find(const string &mac_address) {
     auto it = client_table.find(mac_address);
     // iterator at the end would mean it wasn't found
     if(it != client_table.end()) {
-        return it->second.String_Data();
+        std::ostringstream ss;
+        ss << "  __________________________" << "\n"
+       << "  |        Client          |" << "\n"
+       << "  | Name: " << std::setw(17) << std::left << it->second.getName() << "|" << "\n"
+       << "  | RSSI: " << std::setw(17) << std::left << it->second.getRSSI() << "|" << "\n"
+       << "  | MAC:  " << std::setw(17) << std::left << it->second.getMAC()  << "|" << "\n"
+       << "  --------------------------";
+        return ss.str();
     }
     else return ""; // for error checking return nullptr
 }
@@ -53,10 +71,18 @@ string Router::Find(const string &mac_address) {
 // Purpose: Prints all the clients in the router
 void Router::printAll() const {
     // exists
-    if(client_table.size() > 0) {
-        for(auto it = client_table.begin(); it != client_table.end(); ++it) {
-            cout << client_table.bucket(it->first) << endl; // prints out bucket #
-            it->second.Print_Data(); // prints name, rssi, mac_address
-        }
+    Print_State();
+
+    std::cout << "\nCONNECTED CLIENTS:\n";
+    if (client_table.empty()) {
+        std::cout << "  (No clients currently connected)\n";
+        return;
+    }
+
+    // Range-based for loop works exactly the same for unordered_map
+    for (const auto& pair : client_table) {
+        // pair.first is the MAC address (key)
+        // pair.second is the Client object (value)
+        std::cout << Find(pair.first) << "\n\n";
     }
 }
