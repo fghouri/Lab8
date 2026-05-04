@@ -4,9 +4,10 @@
 /* ** Includes ** */
 #include "router.hpp"
 #include "client.hpp"
+
+#include <string>
 #include <unordered_map>
 
-// Purpose: Initializes up the variable for the router
 string Router::Set_Up(const bool stateful, int max_clients, int min_rssi)
 {
     // set up
@@ -16,12 +17,11 @@ string Router::Set_Up(const bool stateful, int max_clients, int min_rssi)
     return "";
 }
 
-// Purpose: Adds a client to the router
-string Router::Add(const string &name, const int &rssi, const string &mac_address) {
+string Router:: Add(const string &name, const int &rssi, const string &mac_address) {
     Client client(name, rssi, mac_address);
-    
+
     if(stateful) {
-        if(client_table.size() >= this->max_clients) return "Router table full";
+        if(static_cast<int>(client_table.size()) >= this->max_clients) return "Router table full";
         else {
             // returns a pair {iterator, bool success}
             auto result = client_table.insert({mac_address, client});
@@ -40,20 +40,18 @@ string Router::Add(const string &name, const int &rssi, const string &mac_addres
     }
     return "";
 }
-
 // Purpose: Looks for a client and returns the client object if found, else nullptr
-Client* Router::Find(const string &mac_address) {
+string Router::Find(const string &mac_address) {
     auto it = client_table.find(mac_address);
-
     // iterator at the end would mean it wasn't found
     if(it != client_table.end()) {
-        return &it->second;
+        return it->second.String_Data();
     }
-    else return nullptr; // for error checking return nullptr
+    else return ""; // for error checking return nullptr
 }
 
 // Purpose: Prints all the clients in the router
-void Router::printAll() {
+void Router::printAll() const {
     // exists
     if(client_table.size() > 0) {
         for(auto it = client_table.begin(); it != client_table.end(); ++it) {
