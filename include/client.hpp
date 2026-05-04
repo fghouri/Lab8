@@ -17,6 +17,7 @@ class Client {
         string getMAC() const;
         int getRSSI() const;
         void Print_Data() const;
+        void Print_Client_Card() const;
         string String_Data();
 
     private:
