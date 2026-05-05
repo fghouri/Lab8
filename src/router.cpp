@@ -8,6 +8,7 @@
 #include <string>
 #include <unordered_map>
 
+// Purpose: Sets router initial state based on ./ initialization
 string Router::Set_Up(const bool stateful, int max_clients, int min_rssi)
 {
     // set up
@@ -16,7 +17,7 @@ string Router::Set_Up(const bool stateful, int max_clients, int min_rssi)
     this->min_rssi = min_rssi;
     return "";
 }
-
+// Purpose: Prints the current state of router 
 void Router::Print_State() const {
     cout << "____________________________________" << endl;
     cout << "|              Router              |" << endl;
@@ -28,6 +29,7 @@ void Router::Print_State() const {
     cout << "------------------------------------" << endl;
 }
 
+// Purpose: Handles stateful and stateless inserts into client table. Handles pre-existing
 string Router:: Add(const string &name, const int &rssi, const string &mac_address) {
     Client client(name, rssi, mac_address);
 
@@ -51,7 +53,7 @@ string Router:: Add(const string &name, const int &rssi, const string &mac_addre
     }
     return "";
 }
-// Purpose: Looks for a client and returns the client object if found, else nullptr
+// Purpose: Looks for a client and returns string of private variables, else empty string
 string Router::Find(const string &mac_address) {
     auto it = client_table.find(mac_address);
     // iterator at the end would mean it wasn't found
