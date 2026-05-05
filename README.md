@@ -129,7 +129,7 @@ P
 Q
 ```
 
-#Contributors:
+# Contributors:
 ## Faraz Ghouri
 ## Casey Higgins
 
