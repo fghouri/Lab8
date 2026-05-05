@@ -54,6 +54,7 @@ int main(int argc, char **argv)
 
     t = (state) ? router.Set_Up(state, max_clients, min_rssi) : router.Set_Up(state);
     if (t != "") throw(t);
+    router.Print_State();
   } catch (string t) {
     cerr << "Usage: router_tester state(Stateful/Stateless) -- if stateless add options --> max_clients min_rssi [prompt] \n";
     if (t != "") cerr << t << endl;
