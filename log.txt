@@ -1,0 +1,37 @@
+Team Members: Faraz Ghouri, Casey Higgins
+
+1. Time Log
+  May 2nd 2026:
+    4PM -> 5PM: Got on discord call and created work checklist and plan
+                Faraz started work on both .hpp files and their corresponding .cpp files
+                Casey worked through the main interface function and how it needed to interact with the objects
+    5PM -> 6PM: Continued implementation of Main(). And facets of the objects i.e. traversal, access of client from router map
+    6PM -> 8PM: Polished remaining functions and discussed test scripts. 
+                router_tester.cpp    router.cpp    client.cpp   router.hpp  client.hpp
+
+  May 3rd 2026:
+    12PM -> 2PM (Casey) - worked on compile errors for main function 
+    8PM -> 10PM (Faraz) - Edited API functions for router and finished functionality
+                router_tester.cpp    router.cpp    client.cpp   router.hpp  client.hpp
+  May 4th 2026:
+    10AM -> 12PM Created Makefile and adjusted to compile all objects and their dependencies
+                 Added test files
+                Makefile     test_stateful.sh      test_stateless.sh
+    4PM -> 6PM  Added formatting to client and router prints. as well as find formatting
+                client.hpp  client.cpp  router.cpp  router.hpp
+  May 5th 2026:
+    6PM -> 8PM  Wrote the REAMDE.md and final checks before submission
+                README.md
+
+What went well:
+Splitting the work into a checklist and actively working on both portions Interface and 
+object API's simultaneously was very effective for getting the structure and flow of our
+project done quickly. Implementing a data structure (std::unordered_map) that we had 
+previously not actually coded required some documentation on return values and iteration methods.
+We had to adjust from some of the methods and return values in our original header file, to 
+better fit into the UI as it was being implemented, got a few index out of bounds errors (core dumping) 
+and compile errors due to mismatch of const settings in our header and .cpp files. We learned
+how to interact and check bounds on an unordered_map as well as access of variables in a custom
+object stored in that map. As well for finding collision mac_addresses using the insert result object's
+second return value a boolean to check successful insertion.
+    
