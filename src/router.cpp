@@ -54,7 +54,7 @@ string Router:: Add(const string &name, const int &rssi, const string &mac_addre
     return "";
 }
 // Purpose: Looks for a client and returns string of private variables, else empty string
-string Router::Find(const string &mac_address) {
+string Router::Find(const string &mac_address) const {
     auto it = client_table.find(mac_address);
     // iterator at the end would mean it wasn't found
     if(it != client_table.end()) {
