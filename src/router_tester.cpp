@@ -103,7 +103,7 @@ int main(int argc, char **argv)
         if (t == ""){
           cout << "Not found. \n";
         } else {
-          cout << "Found: " << t << endl;
+          cout << "Found: \n" << t << endl;
         }
       }
     } else if (sv[0] == "P") {                // Print all clients
