@@ -43,6 +43,12 @@ Compile everything using:
 ```
 make
 ```
+## **IF MAKE FAILS WITH MISSING SEPARATOR**
+- Cause: transfer from windows to linux replaces tab/newline with spaces
+- Solution: delete all indents up to previous line then hit enter and tab to make a new newline and tab indent
+- Affected lines: 14 21 24 27 33
+Transferring from linux to linux make runs just fine. 
+
 This produces:
 ```
 bin/router_tester
