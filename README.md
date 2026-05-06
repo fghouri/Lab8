@@ -32,6 +32,13 @@ bin/router_tester
 ```
 
 ## Build
+Pre-requisites
+```
+chmod 744 tests/test_stateless.sh
+chmod 744 tests/test_stateful.sh
+mkdir bin
+mkdir obj
+```
 Compile everything using:
 ```
 make
