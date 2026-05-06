@@ -82,20 +82,25 @@ Add Client
 A name rssi mac_address
 ```
 - Adds client to router table.
+  
 Find Client
 ```
 F mac_address
 ```
+- Looks up for the client tied to the mac_addres.
+
 Print All Clients
 ```
 P
 ```
 - Prints entire client table
+  
 Quit
 ```
 Q
 ```
 - Exits the program
+  
 Help
 ```
 ?
