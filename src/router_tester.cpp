@@ -1,3 +1,9 @@
+/**********************************************************
+* router_tester.cpp
+* Interface for interaction with router and clients within
+* Usage: ./router_tester <state> <max_clients> <min_rssi>
+**********************************************************/
+
 // This file runs the interface for the router allowing lookup, additions, deletions, and state instantiation via user input
 // Example setup prompt usage: router_tester state(stateful/stateless) if stateful grab components max_clients min_rssi
 
@@ -11,6 +17,7 @@
 #include <vector>
 using namespace std;
 
+// Helper function for Help query
 void print_commands()
 {
   cout << "A key val      Add the given key/val pair to the router's client table.\n";
@@ -20,15 +27,17 @@ void print_commands()
   cout << "?              Print commands.\n";
 }
 
+// Main Interface setup and loop
 int main(int argc, char **argv)
 {
+  // Set up init Vars
   string name, prompt, mac_address;
   Router router;
   int max_clients =1000;
   int min_rssi = 0;
   int rssi;
 
-
+  // Set up helper vars
   string t, line;        // read new line append to vector sv
   vector <string> sv;
   istringstream ss;
@@ -41,7 +50,7 @@ int main(int argc, char **argv)
     if (prompt.size() > 0 && prompt[prompt.size()-1 != ' ']) prompt.push_back(' ');
 
     
-
+    // Error checking for argv
     bool state = (argc == 4 && string(argv[1]) == "stateful") ? true : false;
     if (state){
       ss.clear();
@@ -51,11 +60,11 @@ int main(int argc, char **argv)
       ss.str(argv[3]);
       if (!(ss >> min_rssi)) throw((string) "Bad Minimum RSSI");
     }
-
+    // Set up router based on state 
     t = (state) ? router.Set_Up(state, max_clients, min_rssi) : router.Set_Up(state);
     if (t != "") throw(t);
     router.Print_State();
-  } catch (string t) {
+  } catch (string t) {    // handle instantiation errors
     cerr << "Usage: router_tester state(Stateful/Stateless) -- if stateless add options --> max_clients min_rssi [prompt] \n";
     if (t != "") cerr << t << endl;
     return 1;
@@ -71,9 +80,9 @@ int main(int argc, char **argv)
     ss.clear();
     ss.str(line);
     while (ss >> t) sv.push_back(t);
-
+    // Handle operations
     if (sv.size() == 0 || sv[0][0] == '#') {
-    } else if (sv[0] == "A") {
+    } else if (sv[0] == "A") {                  // Add new client
       if (sv.size() < 4) {
         cout << "Usage: A name rssi mac\n";
       } else {
@@ -86,7 +95,7 @@ int main(int argc, char **argv)
           cout << t << endl;
         }
       }
-    } else if (sv[0] == "F") {
+    } else if (sv[0] == "F") {                 // Find client
       if (sv.size() != 2){
         cout << "Usage: F mac_address\n";
       } else {
@@ -97,14 +106,14 @@ int main(int argc, char **argv)
           cout << "Found: " << t << endl;
         }
       }
-    } else if (sv[0] == "P") {
-      router.printAll();
-    } else if (sv[0] == "Q") {
+    } else if (sv[0] == "P") {                // Print all clients
+      router.printAll();                      // and router state  
+    } else if (sv[0] == "Q") {                // Exit program
       return 0;
-    } else if (sv[0] == "?") {
+    } else if (sv[0] == "?") {                // Print Help
       print_commands();
     } else {
-      printf("Unkown command %s\n", sv[0].c_str());
+      printf("Unkown command %s\n", sv[0].c_str()); // Catchall
     }
 
   }
