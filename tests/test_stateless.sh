@@ -5,4 +5,4 @@ for i in {1..15}; do echo "F 00:11:22:33:44:$i"; done >> input.txt
 for i in {1..5}; do echo "F ff:ff:ff:ff:ff:$i"; done >> input.txt
 echo "P" >> input.txt
 echo "Q" >> input.txt
-./router_tester stateless < input.txt
+./bin/router_tester stateless < input.txt
