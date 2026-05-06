@@ -7,6 +7,7 @@
 
 #include <string>
 #include <unordered_map>
+#include <sstream>
 
 // Purpose: Sets router initial state based on ./ initialization
 string Router::Set_Up(const bool stateful, int max_clients, int min_rssi)
